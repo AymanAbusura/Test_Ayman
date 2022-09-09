@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <title>Напишите нам форм</title>
+  <meta content="text/html; charset=utf-8" http-equiv="content-Type"/>
+<style type="text/css">
+ #body{
+ background-color: silver;
+ }
+ 
+ .container{
+ background-color: white;
+ display: inline-block;
+ border-radius: 10px;
+ margin: 10px;
+ }
+ 
+ .container2{
+ margin: 10px;
+ }
+ 
+ #header{
+ border-style: outset;
+ background-color: rgba(139, 0, 0);
+ font-size: 20px;
+ color: white;
+ padding: 10px;
+ }
+ 
+ label{
+ width: 100px;
+ display: inline-block;
+ padding:10px;
+ }
+ 
+ .textbox_design{
+ width: 200px;
+ display: inline-block;
+ border-radius: 5px;
+ }
+ 
+ .Цифры1{
+ width: 100px;
+ display: inline-block;
+ border-radius: 5px;
+ }
+ 
+ .Цифры2{
+ width: 50px;
+ display: inline-block;
+ border-radius: 5px;
+ border-color: rgba(255,140,0);
+ text-align:center;
+ color: rgba(255,140,0);
+ }
+ 
+ input#Имя {
+ background-position: left;
+ background-image: url(name_logo.png);
+ background-repeat: no-repeat;
+ background-size: 20px;
+}
+#Имя:focus  {
+ background-image:none;
+} 
+
+input#Email {
+ background-position: left;
+ background-image: url(email_logo.jpg);
+ background-repeat: no-repeat;
+ background-size: 20px;
+}
+#Email:focus  {
+ background-image:none;
+}  
+
+ input#Телефон {
+ background-position: left;
+ background-image: url(mob_logo.jpg);
+ background-repeat: no-repeat;
+ background-size: 20px;
+}
+#Телефон:focus  {
+ background-image:none;
+} 
+
+ #submit{
+ display: block;
+ margin-left: 120px;
+ }
+
+</style>
+<body id="body">
+ <div class="container">
+	<div>
+		<div class="container2">
+		<h3 id="header">Напишите нам</h3>
+		<form method="POST" action="connect3.php">
+			<div>
+				<label>Ваше имя: </label><input type="text" name="Имя" id="Имя" onchange="hideIcon(this);" class="textbox_design" required>
+			</div>
+			<div>
+				<label>Ваш Email: </label><input type="email" name="Email" id="Email" onchange="hideIcon(this);" class="textbox_design" required>
+			</div>
+			<div>
+				<label>Ваш телефон: </label><input type="tel" name="Телефон" id="Телефон" onchange="hideIcon(this);" class="textbox_design" required>
+			</div>
+			<div>
+				<label>Тема: </label>
+				<select name="Тема" class="textbox_design">
+				<option value="Техподдержка"> Техподдержка </option>
+				<option value="Продажи"> Продажи </option>
+				<option value="Другое"> Другое </option>
+				<option value="Еще один пункт"> Еще один пункт </option>
+				</select>
+			</div>
+			<div>
+				<label>Ваше сообщение: </label><textarea type="text" name="Сообщение" class="textbox_design"></textarea>
+			</div>
+			<div>
+			    <label>Цифры: </label>
+			    <input type="text" class="Цифры1" id="textinput">
+				<input type="text" class="Цифры2" readonly id="capt" onclick="cap()">
+			</div>
+	        <div>
+				<button name="submit" onclick="validcap()" class="btn btn-lg btn-success btn-block" id="submit" >Отправить письмо!</button>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+  function cap(){
+    var alpha = ['1','2','3','4','5','6','7','8','9','0'];
+                 var a = alpha[Math.floor(Math.random()*10)];
+                 var b = alpha[Math.floor(Math.random()*10)];
+                 var c = alpha[Math.floor(Math.random()*10)];
+                 var d = alpha[Math.floor(Math.random()*10)];
+                 var e = alpha[Math.floor(Math.random()*10)];
+
+                 var final = a+b+c+d+e;
+                 document.getElementById("capt").value=final;
+               }
+               function validcap(){
+                var stg1 = document.getElementById('capt').value;
+                var stg2 = document.getElementById('textinput').value;
+                if(stg1==stg2){
+                  alert("Форма успешно подтверждена");
+                  return true;
+                }else{
+                  alert("Пожалуйста, заполните поле для цифр");
+                  return false;
+                }
+               }
+</script>
+<script>
+function hideIcon(self) {
+    self.style.backgroundImage = 'none';
+}
+</script>
+<script>
+alert("Нажмите на желтое поле, чтобы показать цифры!");
+</script>
+ </form>
+</body>
+</html>
